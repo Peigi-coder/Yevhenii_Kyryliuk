@@ -14,6 +14,8 @@ title: document.getElementById('title').value,
 author: document.getElementById('author').value,
 published_date: document.getElementById('published_date').value || null,
 pages: parseInt(document.getElementById('pages').value || 0)
+genre: document.getElementById('genre').value || '',
+rating: parseFloat(document.getElementById('rating').value || 0)
 };
 if(!payload.title || !payload.author){alert('Wpisz tytuł i autora');return;}
 if(id){await fetch(`${API}/books/${id}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}
@@ -39,6 +41,8 @@ document.getElementById('title').value = b.title;
 document.getElementById('author').value = b.author;
 document.getElementById('published_date').value = b.published_date || '';
 document.getElementById('pages').value = b.pages;
+document.getElementById('genre').value = b.genre || '';
+document.getElementById('rating').value = b.rating || '';
 }
 
 
@@ -48,6 +52,8 @@ document.getElementById('title').value = '';
 document.getElementById('author').value = '';
 document.getElementById('published_date').value = '';
 document.getElementById('pages').value = '';
+document.getElementById('genre').value = '';
+document.getElementById('rating').value = '';
 }
 
 

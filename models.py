@@ -11,6 +11,8 @@ title = db.Column(db.String(255), nullable=False)
 author = db.Column(db.String(255), nullable=False)
 published_date = db.Column(db.Date)
 pages = db.Column(db.Integer, default=0)
+genre = db.Column(db.String(100), nullable=True)
+rating = db.Column(db.Float, default=0.0) 
 
 
 def to_dict(self):
@@ -19,5 +21,7 @@ return {
 'title': self.title,
 'author': self.author,
 'published_date': self.published_date.isoformat() if self.published_date else None,
-'pages': self.pages
+'pages': self.pages,
+'genre': self.genre,
+'rating': self.rating
 }

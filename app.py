@@ -25,6 +25,8 @@ title=data['title'].strip(),
 author=data['author'].strip(),
 published_date=datetime.fromisoformat(data['published_date']).date() if data.get('published_date') else None,
 pages=int(data.get('pages', 0))
+genre=data.get('genre', '').strip(),
+rating=float(data.get('rating', 0))
 )
 db.session.add(b)
 db.session.commit()
@@ -39,6 +41,9 @@ _validate_book_payload(data, partial=True)
 if 'title' in data: b.title = data['title']
 if 'author' in data: b.author = data['author']
 if 'pages' in data: b.pages = int(data['pages'])
+if 'genre' in data: b.genre = data['genre'].strip()
+if 'rating' in data: b.rating = float(data['rating'])
+
 if 'published_date' in data:
 b.published_date = datetime.fromisoformat(data['published_date']).date() if data['published_date'] else None
 db.session.commit()
