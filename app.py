@@ -1,17 +1,17 @@
 from flask import Flask, jsonify, request, abort, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import os
 
 app = Flask(__name__)
-
-# SQLite w Railway działa w katalogu /data
-db_path = os.path.join(os.path.dirname(__file__), 'books.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///books.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+# 📄 STRONA GŁÓWNA — zwraca index.html
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 class Book(db.Model):
     __tablename__ = 'books'
