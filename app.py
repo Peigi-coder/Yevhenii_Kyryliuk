@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request, abort
 try:
-datetime.fromisoformat(data['published_date'])
+    datetime.fromisoformat(data['published_date'])
 except:
-abort(400, description='Field "published_date" must be YYYY-MM-DD')
+    abort(400, description='Field "published_date" must be YYYY-MM-DD')
+
 
 
 @app.route('/api/books', methods=['GET'])
