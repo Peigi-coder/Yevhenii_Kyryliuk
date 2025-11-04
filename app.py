@@ -6,6 +6,7 @@ except:
 
 
 
+
 @app.route('/api/books', methods=['GET'])
 def list_books():
 return jsonify([b.to_dict() for b in Book.query.all()]), 200
